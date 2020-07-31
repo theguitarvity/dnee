@@ -1,0 +1,29 @@
+
+{% extends "main/base.html" %}
+{% block conteudo %}
+    <div class="content">
+        <div class="row z-depth-5 col s12 card-panel valign-wrapper" style="width:35%;position: absolute;top: 38%;left: 50%;transform: translate(-50%, -50%);">
+            
+            <form class="col s12" method="post" action = "{% url 'user_login' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder = "Insira seu username" name="username" id="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder = "Insira sua senha" id="password" name = "password" type="password" class="validate">
+                        <label for="password">Senha</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <button class="btn light-blue accent-4" type="submit">Entrar<i class="material-icons right">send</i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock  %}

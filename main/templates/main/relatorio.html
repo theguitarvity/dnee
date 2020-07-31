@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Relatório refente ao agente {{agente.agent_name}}</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        {% if agentes_rel %}
+        <div class='wrapper'>
+            <div class='header'>
+                <img src="https://i.imgur.com/lN5eprd.png" alt="logo" width="300px">
+                <p class='title'>Relatório de dados extraídos  - {{data}}</p>
+            </div>
+        <div>
+            {% for ag in agentes_rel %}
+                
+                {% with  noti=ag.agent_domain %}
+                <div class='details'>
+                    Nome do agente: {{ag.agent_name}} <br/>
+                    Domínio base do agente: {{ag.agent_domain}} <br/>
+                    Noticias extraidas: {% for i in ag.crawler.all%}{{i.noticias.count}}{% endfor %}
+                    
+                    
+                    <br/>
+                    
+                    <hr class='hrItem' />
+                </div>
+                {% endwith %}
+            {% endfor %}
+        {% else %}
+        <div class='wrapper'>
+            <div class='header'>
+                <img src="https://i.imgur.com/lN5eprd.png" alt="logo" width="300px">
+                <p class='title'>Relatório de dados extraídos  - {{data}}</p>
+            </div>
+        <div>
+        <div class='details'>
+            Nome do agente: {{agente.agent_name}} <br/>
+            Domínio base do agente: {{agente.agent_domain}} <br/>
+            Noticias extraidas: {{noticias}}  <br/>
+            
+            <hr class='hrItem' />
+        </div>
+        {% endif %}
+    </div>
+    </body>
+</html>

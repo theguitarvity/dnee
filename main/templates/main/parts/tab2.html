@@ -1,0 +1,110 @@
+<div class="row" style="padding:10px 10px 10px 10px;">
+        <div class="col s1 m6 card-panel z-depth-5" style="width:45%;height:470px;margin:10px 10px 10px 10px; float:left;">
+            
+            <div class="row" style="padding: 10px 10px 10px 10px;">
+                <h5>Dados</h5>
+                <div class="col s4 m5 card-panel z-depth-5" style="margin:10px 10px 10px 10px">
+                    <h6>Crawlers em extração: {{allcrawlers|length}}</h6>
+                    <h6>Domínios: {{allagents|length}}  </h6>
+                </div>
+                <div class="col s4 m5 card-panel z-depth-5">
+                    <h6>Agentes ativos no momento:{{allagents|length}} </h6>
+                    <h6>Notícias: {{allnews|length}}</h6>
+                </div>
+            </div>
+            <div class="row" style="padding: 10px 10px 10px 10px; margin-top:-50px">
+                <h5>Monitoramento</h5>
+                <div class="col s4 m10 card-panel z-depth-5" style="margin:10px 10px 10px 10px;">
+                    <div class="row" style="padding: 10px 10px 10px 10px;">
+                        <div style="width:auto; height:200px;">
+                            <canvas id="myChart" style="width:100%;"></canvas>
+                        </div>
+                            
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="col s1 m6 card-panel z-depth-5" style="margin:10px 10px 10px 10px; width:45%;float:left">
+            <h5>Agentes em extração</h5>
+                <div class="row" style="padding: 10px 10px 10px 10px; margin-top:-30px">
+                    <h5></h5>
+                    <div class="col s4 m10 " style="margin:10px 10px 10px 10px;">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                            {% csrf_token %}
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">search</i>
+                                <input id="searchtxt" type="search" class="searchtxt validate" name="searchtxt">
+                                
+                            </div>
+                            
+                            <div class="content-search">
+
+                            </ul>
+                            <!---<form id=”search” method=”POST” action="{% url 'search'%}">
+                                {% csrf_token %}
+                                <input type=”text” class=”form-control” id=”txtSearch” name=”txtSearch”>
+                                <button type=”submit” class=”btn btn-default btn-submit”>Submit</button>
+                            </form>--->
+
+                                            
+                        </div>
+                    
+                    </div>
+
+                </div>
+                <div class ="row" style="margin:10px 10px 10px 10px;">
+                    
+                    <ul class="collection" style="width:100%;overflow-y: scroll;height:300px;">
+    
+                    {% if  allagents %}
+                        
+                        {% for agent in allagents%}
+                           
+                            <div class="col s4 m4">
+                                    <a href="{% url 'agente' agent.id%}" target="_blank">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/106/881/small/free-strass-vector-gold-glitter-texture-on-black-background.jpg" style="width:100%;height:100px;">
+                                                <span class="card-title">{{agent.agent_domain}}</span>
+                                                <a class="btn-floating halfway-fab waves-effect waves-light green " href="{% url 'agente' agent.id %}" target="_blank"><i class="material-icons">
+                                                    add
+                                                
+                                                </i></a>
+                                            </div>
+                                            <div class="card-content">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                
+                                </div> 
+                        {% endfor %}
+                    
+                    {% endif %}
+                    
+                    
+                </ul>
+                </div>
+                <div class="row" style="padding: 10px 10px 10px 10px; margin-top:-30px">
+                    <h5>Ações</h5>
+                    <div class="col s4 m10 card-panel z-depth-5" style="margin:10px 10px 10px 10px;">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                            
+                            
+                            <a class="waves-effect waves-light btn modal-trigger light-blue accent-4" href="#modal1" data-target = "modal1"><i class="material-icons right">person_add</i>Adicionar agente</a>
+                            <a class="waves-effect waves-light btn modal-trigger light-blue accent-4" href="{% url 'gerarG'%}" target="_blank"><i class="material-icons right">picture_as_pdf</i>Gerar relatório</a>
+                  
+                        </div>
+                       
+                    </div>
+
+                </div>
+                
+        </div>
+        
+        
+    </div>

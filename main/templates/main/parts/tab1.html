@@ -1,0 +1,42 @@
+<div class="container">
+            <div class="row" style="overflow-y: scroll;">
+            {% if last_agent_list %}
+                {% for agent in last_agent_list  %}
+                    <div class="col s4 m4">
+                        <a href="{% url 'agente' agent.id%}" target="_blank">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="https://lh3.googleusercontent.com/Dq44vcbJz-9QHtk4I4PZnb0XTfA8-ca2wqQWs_WlnKr0y4eixjLFyeaQBbmcADwhfw">
+                                    <span class="card-title">{{agent.agent_name}}</span>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red" href="{% url 'remove' agent.id%}"><i class="material-icons">
+                                        delete
+                                    
+                                    </i></a>
+                                </div>
+                                <div class="card-content">
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    
+                    </div>     
+                {% endfor %}
+                   
+            {% else %}
+                <h2>Nenhum Agente cadastrado</h2>
+            {% endif %}
+                
+                
+                        
+                
+                
+            </div>
+        </div>
+        
+    
+       
+
+       
+
+        
+        

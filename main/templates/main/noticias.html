@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% block conteudo %}
+    
+    <div class="row" style="padding:10px 10px 10px 10px;">
+        <div class="col s1 m6 card-panel z-depth-5" style="width:45%;height:470px">
+            
+            <div class="row" style="padding: 10px 10px 10px 10px;">
+                <h5>Dados</h5>
+                <div class="col s4 m5 card-panel z-depth-5" style="margin:10px 10px 10px 10px">
+                    <h6>Crawlers em extração: {{allcrawlers|length}}</h6>
+                    <h6>Domínios: {{allagents|length}}  </h6>
+                </div>
+                <div class="col s4 m5 card-panel z-depth-5">
+                    <h6>Agentes ativos no momento:{{allagents|length}} </h6>
+                    <h6>Notícias: {{allnews|length}}</h6>
+                </div>
+            </div>
+            <div class="row" style="padding: 10px 10px 10px 10px; margin-top:-50px">
+                <h5>Ações</h5>
+                <div class="col s4 m10 card-panel z-depth-5" style="margin:10px 10px 10px 10px;">
+                    <div class="row" style="padding: 10px 10px 10px 10px;">
+                        
+                            <a href="{% url 'gerarG' %}" class="card-panel left z-depth-5" ">
+                                <div class="row">
+                                    <i class="material-icons medium">picture_as_pdf</i>
+                                </div>
+                                <div class="row">Relatório</div>
+                            </a>
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class=" col s12 m6  container card-panel z-depth-5 left-align" style="float:right;margin:10px 10px 10px 10px;">
+            <h5>Notícias extraídas</h5>
+            <ul class="collection" style="width:100%;overflow-y: scroll;height:400px;">
+    
+        {% if  allnews %}
+            {% for news in allnews %}
+                <div class="row">
+                    <a href="{{news.link_noticia}}" target="_blank">
+                    <li class="collection-item avatar col s12">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">{{news.titulo_noticia}}</span>
+                        <p>{{news.subtitulo_noticia}} <br>
+                            
+                        </p>
+                        
+                    </li>
+                </a>
+                </div>
+            {% endfor %}
+        
+        {% endif %}
+        
+        
+    </ul>
+        </div>
+    </div>
+{% endblock %}

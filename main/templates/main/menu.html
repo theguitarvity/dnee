@@ -1,0 +1,260 @@
+{% load staticfiles %}
+<style>  
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+ main {
+     flex: 1 0 auto;
+ }  
+nav ul li a{
+  color: black;
+}
+ul li{
+    color: #222;
+}
+nav form {
+  position: relative;
+  height: 100%;
+  background: inherit;
+}
+.nav-wrapper{
+  background: inherit;
+  
+}
+
+.search-close-icon{
+  display: none!important;
+  position: absolute;
+  top: 0;
+  left: 100%!important;
+  padding-left: 0px;
+  color: rgba(0, 0, 0, 0.54);
+  transition: color .2s;
+  cursor: pointer;
+}
+
+
+.my-grey{
+  background: #f7f7f7;
+}
+
+input.search-field {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.54);
+  border-radius: 2px;
+  border: 0;
+  height: 36px;
+  padding: 8px 8px 8px 60px;
+  width: 200px;
+  background: #f7f7f7;
+  transition: background 0.2s, width .2s;
+}
+input.search-field:hover {
+  background: #ebebeb;
+}
+.searchbox {
+  position: relative;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0, 0, 0, 0.54);
+}
+input.search-field:focus {
+  outline: none;
+  width: 500px;
+  color: #212121;
+}
+input.search-field:focus:hover {
+  background: #f7f7f7;
+}
+.search-icon {
+  position: absolute;
+  top: 0;
+  padding-left: 20px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.search-content {
+  color: #303c42;
+  width: 90%;
+  margin: auto;
+  height: auto;
+  padding: 8px 10px;
+}
+.search-heading {
+  color: #757575;
+  display: block;
+  font-size: 12px;
+  line-height: 30px;
+}
+input.search-field ~ .search-popup {
+  overflow: hidden;
+  left: 0px;
+  min-height: 50px;
+  max-height: 700px;
+  width: 200px;
+  top: -450px; 
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  transition: width .2s, top .2s ease-in-out;
+  border-radius: 2px;
+  background-color: #fff;
+}
+input.search-field:focus ~ .search-popup {
+  width: 500px;
+  top: 50px;
+}
+nav ul.popup-list a:hover {
+  background-color: initial;
+}
+nav ul.popup-list li {
+  float: none;
+}
+nav ul.popup-list li a {
+  line-height: 30px;
+  padding: 0;
+  font-size: 12px;
+  color: #212121 !important;
+}
+nav ul.popup-list li a:hover {
+  background-color: #f7f7f7;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+
+@media only screen and (max-width: 600px) {
+  
+ 
+  
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: transparent;
+  }
+
+  input.search-field {
+    width: 100px;
+    margin-right: 0px;
+    padding: 8px 25px;
+  }
+  input.search-field ~ .search-popup {
+    width: 1px;
+    
+    padding: 8px 25px;
+  }
+
+  .search-icon {
+    
+    
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  input.search-field:focus {
+    margin-right: 0px;
+    width: 100vw;
+    padding: 8px 8px 8px 50px;
+  }
+
+  input.search-field:focus ~ .search-popup {
+    
+  }
+
+  .search-content {
+    width: 100%;
+    padding: 8px 8px;
+  }
+
+  
+}
+
+</style>
+{% block menu %}
+    <div class="navbar-fixed">
+      {% if user.is_authenticated %}
+      <nav class="nav  grey lighten-3 ">
+        <div class="nav-wrapper">
+            <a class="brand-logo" href="/">
+                <img src="{% static 'assets/img/logocerto.png' %}" style="width:90px;margin-left: 10px; margin-top:-10px"></img>
+            </a>
+            <a class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons" >menu</i>
+            </a>
+            
+            
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/"><i class="material-icons">home</i></a></li>
+                <li><a href="{% url 'news' %}"><i class="material-icons">chrome_reader_mode</i></a></li>
+                <li><a href="{% url 'info' %}"><i class="material-icons">info</i></a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>  
+                {% else %}
+                {% endif %}
+            </ul>
+        </div>
+        <div class="nav-content pushpin-demo-nav pin-top">
+                {% if agent %}
+                 
+                {% else%}
+
+                 <span class="nav-title">
+                    
+                       
+                    
+
+                </span>
+                
+                {% endif %}    
+                
+               
+                {% if agent %}
+                   
+                {% else %}
+                    
+                    
+                {% endif %}
+        </div>
+    </nav>
+    
+      {% else %}
+      <nav class="nav  grey lighten-3 ">
+        <div class="nav-wrapper">
+            <a class="brand-logo" href="/">
+                <img src="{% static 'assets/img/logocerto.png' %}" style="width:90px;margin-left: 10px; margin-top:-10px"></img>
+            </a>
+            <a class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons" >menu</i>
+            </a>
+            
+            
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'user_login'%}">Login</a></li>
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                
+            </ul>
+        </div>
+        
+        </div>
+    </nav>
+    
+      {% endif %}
+    </div>
+    
+    
+    <ul class="sidenav" id="mobile-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Agentes</a></li>
+                <li><a href="#">Sobre</a></li>
+    </ul>
+{% endblock %}

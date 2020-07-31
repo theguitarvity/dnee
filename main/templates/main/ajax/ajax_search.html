@@ -1,0 +1,11 @@
+{% if news.count > 0 %}
+<ul id="search_results" style="background-color:white;" class="collection">
+    {% for n in news %}
+    <li class="collection-item"><a target="__blank" href="{{n.link_noticia}}">{{n.titulo_noticia}}</a></li>
+    {% endfor %}
+
+</ul>
+    
+
+
+{% endif %}

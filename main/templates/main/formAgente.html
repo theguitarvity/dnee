@@ -1,0 +1,51 @@
+<!-- Modal Structure -->
+
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Criar um novo agente de monitoramento</h4>
+                <p>Insira os dados do portal de noticias que deseja monitorar</p>
+                 <div class="row">
+                    {% if error_message %}
+                        <h4>{{error_message}}</h4>
+                    {% endif %}
+                    <form class="col s12" action="{% url 'newagent'%}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">chrome_reader_mode</i>
+                                <input id="icon_prefix" type="text" class="validate" name="agent_name">
+                                <label for="icon_prefix">Nome do agente</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">attach_file</i>
+                                <input id="icon_dom" type="text" class="validate" name="agent_domain">
+                                <label for="icon_dom">Dominio do site</label>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="row">
+                                    <div class="input-field col s6">
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+                                            <i class="material-icons right">send</i>
+                                        </button>
+
+                                    </div>
+
+                        </div>
+                    </form>
+                </div>    
+                                
+                
+            </div>
+
+           
+            <div class="modal-footer">
+                    <a href="#!" class="modal-close btn waves-effect waves-red btn-flat">Fechar</a>
+            </div>
+
+            
+           
+            
+        </div>

@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% block conteudo %}
+<div class="content">
+
+    <div id = "teste" class="s12 card-panel">
+        <h2>DNEE  - Dynamic News Extraction Engine</h2>
+
+
+            <p>O DNEE é uma plataforma de extração de notícias em tempo real. O funcionamento do DNEE é baseado em extração dinâmica de dados na internet, com o uso de agentes baseados em web crawlers, agindo diretamente em cada site cadastrado em sua base de dados.</p>
+
+            <h5>O Funcionamento do DNEE consiste em:</h5>
+
+            <ul>
+                <li>Cada site de notícia é alocado a um único agente, pelo qual o mesmo irá atuar na extração de amostragem dos dados;</li>
+                <li>Cada agente será responsável por um Crawler</li>
+                <li>Cada Crawler será responsável por conter informações sobre o site e o mesmo será a referência para a extração das notícias</li>
+                <li>Cada Crawler possui n notícias, extraídas em tempo real</li>
+            </ul>
+
+            <h5>Arquitetura DNEE:</h5>
+            <ul>
+                <li>Todo o funcionamento da ferramenta, depende inteiramente de um motor de busca dinâmica, o MED.</li>
+                <li>Toda busca e processamento de novos agentes, é realizada inteiramente pelo MED, em seu algoritmo de busca dinâmica.</li>
+                <li>O MED busca por novos sites de notícias e os adiciona em tempo real a fila de extração, onde posteriormente serão extraídos, as notícias do site em tempo real.</li>
+
+            </ul>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+{% endblock %}
