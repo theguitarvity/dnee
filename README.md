@@ -25,11 +25,11 @@
 ```
 * Clonar repositório 
 ```
-    git clone https://git.facom.ufms.br/ic-victorlopes/fakehunter.git
+    git clone https://github.com/theguitarvity/dnee.git
 ```
 * Entrar no diretório
 ```
-  cd fakehunter
+  cd dnee
 ```
 
 
